@@ -1,7 +1,6 @@
-package graphs.impl
+package graphs.adjacencymap
 
 import graphs.DirectedGraph
-import graphs.abstractimpl.ValuedAdjacencyMapMutableGraph
 
 open class ValuedDirectedAdjacencyMapMutableGraph<Vertex, EdgeValue> :
     DirectedGraph<Vertex, Pair<Vertex, EdgeValue>>,

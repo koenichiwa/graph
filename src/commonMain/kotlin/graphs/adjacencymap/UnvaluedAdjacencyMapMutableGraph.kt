@@ -1,4 +1,4 @@
-package graphs.abstractimpl
+package graphs.adjacencymap
 
 import graphs.UnvaluedMutableGraph
 
