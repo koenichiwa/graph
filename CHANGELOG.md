@@ -11,6 +11,7 @@ and this project adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - CHANGELOG.md file. Wrote down everything that I did yesterday.
 
 ### Changed
+- Version number. Now it adheres to Semantic Versioning.
 
 ### Removed
 
@@ -26,6 +27,6 @@ and this project adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - Create build_test.yml as a start for CI
 
 
-- fix .gitignore to not ignore grade-wrapper.jar
+- Fix .gitignore to not ignore grade-wrapper.jar
 
 ### Removed
