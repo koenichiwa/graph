@@ -1,6 +1,7 @@
 package graphs.util
 
 import graphs.baseinterfaces.GraphBase
+import graphs.baseinterfaces.Valued
 
 @ExperimentalStdlibApi
 fun <Vertex> GraphBase<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
