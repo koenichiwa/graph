@@ -1,9 +1,13 @@
 package graphs
 
-interface ValuedMutableGraph <Vertex, EdgeValue> :
-    ValuedGraph<Vertex, EdgeValue>,
-    MutableGraph<Vertex, Pair<Vertex, EdgeValue>> {
+import graphs.baseinterfaces.GraphBase
+import graphs.baseinterfaces.Mutable
+import graphs.baseinterfaces.Valued
 
-    fun addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
-    fun removeEdge(from: Vertex, to: Vertex): EdgeValue?
+interface ValuedMutableGraph <Vertex, EdgeValue> :
+    GraphBase<Vertex, Pair<Vertex, EdgeValue>>,
+    Valued<EdgeValue>,
+    Mutable<Vertex, Pair<Vertex, EdgeValue>> {
+
+//    fun addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
 }

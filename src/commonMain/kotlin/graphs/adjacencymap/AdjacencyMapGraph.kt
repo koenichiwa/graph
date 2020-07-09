@@ -1,18 +1,12 @@
 package graphs.adjacencymap
 
-import graphs.MutableGraph
+import graphs.baseinterfaces.GraphBase
 
-abstract class AdjacencyMapMutableGraph<Vertex, EdgeType> :
-    MutableGraph<Vertex, EdgeType>,
+abstract class AdjacencyMapGraph<Vertex, EdgeType>(override val isDirected: Boolean) :
+    GraphBase<Vertex, EdgeType>,
     MutableMap<Vertex, MutableSet<EdgeType>> {
 
     private val _adjacencyMap = mutableMapOf<Vertex, MutableSet<EdgeType>>()
-
-    override fun addVertex(vertex: Vertex): Boolean =
-        put(vertex, mutableSetOf()) == null
-
-    override fun removeVertex(vertex: Vertex): Boolean =
-        remove(vertex) != null
 
     override fun containsVertex(vertex: Vertex): Boolean =
         containsKey(vertex)
@@ -28,7 +22,7 @@ abstract class AdjacencyMapMutableGraph<Vertex, EdgeType> :
 
     override fun equals(other: Any?): Boolean =
         other === this ||
-            other is AdjacencyMapMutableGraph<*, *> &&
+            other is AdjacencyMapGraph<*, *> &&
             this.toMap() == other.toMap()
 
     override fun hashCode(): Int =
