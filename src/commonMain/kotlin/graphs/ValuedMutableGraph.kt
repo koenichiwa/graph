@@ -5,9 +5,9 @@ import graphs.baseinterfaces.Mutable
 import graphs.baseinterfaces.Valued
 
 interface ValuedMutableGraph <Vertex, EdgeValue> :
-    GraphBase<Vertex, Pair<Vertex, EdgeValue>>,
-    Valued<EdgeValue>,
-    Mutable<Vertex, Pair<Vertex, EdgeValue>> {
+    GraphBase<Vertex>,
+    Valued<Vertex, EdgeValue>,
+    Mutable<Vertex, EdgeValue> {
 
-//    fun addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
+    fun addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
 }
