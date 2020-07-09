@@ -3,7 +3,7 @@ package graphs.util
 import graphs.baseinterfaces.GraphBase
 
 @ExperimentalStdlibApi
-fun <Vertex, EdgeType> GraphBase<Vertex, EdgeType>.dfs(startVertex: Vertex): List<Vertex> {
+fun <Vertex> GraphBase<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
     val stack = ArrayDeque<Vertex>()
@@ -24,7 +24,7 @@ fun <Vertex, EdgeType> GraphBase<Vertex, EdgeType>.dfs(startVertex: Vertex): Lis
 }
 
 @ExperimentalStdlibApi
-fun <Vertex, EdgeType> GraphBase<Vertex, EdgeType>.bfs(startVertex: Vertex): List<Vertex> {
+fun <Vertex> GraphBase<Vertex>.bfs(startVertex: Vertex): List<Vertex> {
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
     val queue = ArrayDeque<Vertex>()
