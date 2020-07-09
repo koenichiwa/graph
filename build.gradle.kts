@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.koenichiwa"
-version = "1.0-SNAPSHOT"
+version = "0.2.0"
 
 repositories {
     mavenCentral()
