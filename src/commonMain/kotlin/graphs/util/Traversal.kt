@@ -1,9 +1,9 @@
 package graphs.util
 
-import graphs.Graph
+import graphs.baseinterfaces.GraphBase
 
 @ExperimentalStdlibApi
-fun <Vertex, EdgeType> Graph<Vertex, EdgeType>.dfs(startVertex: Vertex): List<Vertex> {
+fun <Vertex, EdgeType> GraphBase<Vertex, EdgeType>.dfs(startVertex: Vertex): List<Vertex> {
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
     val stack = ArrayDeque<Vertex>()
@@ -24,7 +24,7 @@ fun <Vertex, EdgeType> Graph<Vertex, EdgeType>.dfs(startVertex: Vertex): List<Ve
 }
 
 @ExperimentalStdlibApi
-fun <Vertex, EdgeType> Graph<Vertex, EdgeType>.bfs(startVertex: Vertex): List<Vertex> {
+fun <Vertex, EdgeType> GraphBase<Vertex, EdgeType>.bfs(startVertex: Vertex): List<Vertex> {
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
     val queue = ArrayDeque<Vertex>()
