@@ -1,9 +1,9 @@
 package graphs.adjacencymap
 
-import graphs.baseinterfaces.GraphBase
+import graphs.baseinterfaces.Graph
 
 abstract class AdjacencyMapGraph<Vertex> protected constructor(override val isDirected: Boolean) :
-    GraphBase<Vertex>,
+    Graph<Vertex>,
     MutableMap<Vertex, MutableSet<Vertex>> {
 
     private val _adjacencyMap = mutableMapOf<Vertex, MutableSet<Vertex>>()

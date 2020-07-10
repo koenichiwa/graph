@@ -1,8 +1,10 @@
 package graphs.adjacencymap
 
+import graphs.ValuedGraph
 import graphs.ValuedMutableGraph
 
 open class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue>(isDirected: Boolean) :
+    ValuedGraph<Vertex, EdgeValue>,
     ValuedMutableGraph<Vertex, EdgeValue>,
     MutableAdjacencyMapGraph<Vertex, EdgeValue>(isDirected) {
 

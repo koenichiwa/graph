@@ -1,11 +1,11 @@
 package graphs
 
-import graphs.baseinterfaces.GraphBase
+import graphs.baseinterfaces.Graph
 import graphs.baseinterfaces.Mutable
 import graphs.baseinterfaces.Valued
 
 interface ValuedMutableGraph <Vertex, EdgeValue> :
-    GraphBase<Vertex>,
+    Graph<Vertex>,
     Valued<Vertex, EdgeValue>,
     Mutable<Vertex, EdgeValue> {
 

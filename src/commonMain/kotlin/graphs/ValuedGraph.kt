@@ -1,8 +1,8 @@
 package graphs
 
-import graphs.baseinterfaces.GraphBase
+import graphs.baseinterfaces.Graph
 import graphs.baseinterfaces.Valued
 
 interface ValuedGraph<Vertex, EdgeValue> :
-    GraphBase<Vertex>,
+    Graph<Vertex>,
     Valued<Vertex, EdgeValue>
