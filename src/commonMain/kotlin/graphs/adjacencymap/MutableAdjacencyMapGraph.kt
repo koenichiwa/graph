@@ -1,10 +1,10 @@
 package graphs.adjacencymap
 
-import graphs.baseinterfaces.GraphBase
+import graphs.baseinterfaces.Graph
 import graphs.baseinterfaces.Mutable
 
 abstract class MutableAdjacencyMapGraph<Vertex, in EdgeValue> (isDirected: Boolean) :
-    GraphBase<Vertex>,
+    Graph<Vertex>,
     Mutable<Vertex, EdgeValue>,
     AdjacencyMapGraph<Vertex>(isDirected) {
 

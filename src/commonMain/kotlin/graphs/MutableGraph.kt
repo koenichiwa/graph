@@ -1,10 +1,10 @@
 package graphs
 
-import graphs.baseinterfaces.GraphBase
+import graphs.baseinterfaces.Graph
 import graphs.baseinterfaces.Mutable
 
 interface MutableGraph <Vertex> :
-    GraphBase<Vertex>,
+    Graph<Vertex>,
     Mutable<Vertex, Nothing> {
 
     fun addEdge(from: Vertex, to: Vertex): Boolean

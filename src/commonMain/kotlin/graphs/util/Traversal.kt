@@ -1,10 +1,9 @@
 package graphs.util
 
-import graphs.baseinterfaces.GraphBase
-import graphs.baseinterfaces.Valued
+import graphs.baseinterfaces.Graph
 
 @ExperimentalStdlibApi
-fun <Vertex> GraphBase<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
+fun <Vertex> Graph<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
     val stack = ArrayDeque<Vertex>()
@@ -25,7 +24,7 @@ fun <Vertex> GraphBase<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
 }
 
 @ExperimentalStdlibApi
-fun <Vertex> GraphBase<Vertex>.bfs(startVertex: Vertex): List<Vertex> {
+fun <Vertex> Graph<Vertex>.bfs(startVertex: Vertex): List<Vertex> {
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
     val queue = ArrayDeque<Vertex>()

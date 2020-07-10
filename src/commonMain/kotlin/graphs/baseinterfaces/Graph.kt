@@ -1,6 +1,6 @@
 package graphs.baseinterfaces
 
-interface GraphBase<Vertex> {
+interface Graph<Vertex> {
     val isDirected: Boolean
 
     fun containsVertex(vertex: Vertex): Boolean
