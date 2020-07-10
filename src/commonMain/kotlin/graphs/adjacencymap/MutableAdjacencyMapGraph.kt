@@ -9,18 +9,18 @@ abstract class MutableAdjacencyMapGraph<Vertex> (isDirected: Boolean) :
     AdjacencyMapGraph<Vertex>(isDirected) {
 
     override fun addVertex(vertex: Vertex): Boolean {
-        return if (get(vertex) != null)
+        return if (_adjacencyMap[vertex] != null)
             false
         else {
-            put(vertex, mutableSetOf())
+            _adjacencyMap[vertex] = mutableSetOf()
             true
         }
     }
 
     override fun removeVertex(vertex: Vertex): Boolean {
-        val res = remove(vertex) != null
+        val res = _adjacencyMap.remove(vertex) != null
         if (res)
-            values.forEach { it.remove(vertex) }
+            _adjacencyMap.values.forEach { it.remove(vertex) }
         return res
     }
 
@@ -30,9 +30,9 @@ abstract class MutableAdjacencyMapGraph<Vertex> (isDirected: Boolean) :
         if (!containsVertex(to))
             return false
 
-        val res = get(from)!!.remove(to)
+        val res = _adjacencyMap[from]!!.remove(to)
         return if (!isDirected && res)
-            get(to)!!.remove(from)
+            _adjacencyMap[to]!!.remove(from)
         else res
     }
 }

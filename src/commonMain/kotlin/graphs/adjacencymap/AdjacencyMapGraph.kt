@@ -2,45 +2,25 @@ package graphs.adjacencymap
 
 import graphs.baseinterfaces.Graph
 
-abstract class AdjacencyMapGraph<Vertex> protected constructor(override val isDirected: Boolean) :
-    Graph<Vertex>,
-    MutableMap<Vertex, MutableSet<Vertex>> {
+abstract class AdjacencyMapGraph<Vertex>(override val isDirected: Boolean) : Graph<Vertex> {
 
-    private val _adjacencyMap = mutableMapOf<Vertex, MutableSet<Vertex>>()
+    protected val _adjacencyMap = mutableMapOf<Vertex, MutableSet<Vertex>>()
 
     override fun containsVertex(vertex: Vertex): Boolean =
-        containsKey(vertex)
+        _adjacencyMap.containsKey(vertex)
 
     override fun isAdjacent(from: Vertex, to: Vertex): Boolean =
         neighbors(from)?.contains(to) ?: false
 
     override fun neighbors(vertex: Vertex): Set<Vertex>? =
-        get(vertex)
+        _adjacencyMap[vertex]
 
     override fun equals(other: Any?): Boolean =
         other === this ||
-            other is AdjacencyMapGraph<*> &&
-            this.toMap() == other.toMap()
+            other is AdjacencyMapGraph<*> && this.hashCode() == other.hashCode()
 
     override fun hashCode(): Int =
-        _adjacencyMap.hashCode()
-
-    // Map
-    override val size: Int
-        get() = _adjacencyMap.size
-    override val entries: MutableSet<MutableMap.MutableEntry<Vertex, MutableSet<Vertex>>>
-        get() = _adjacencyMap.entries
-    override val keys: MutableSet<Vertex>
-        get() = _adjacencyMap.keys
-    override val values: MutableCollection<MutableSet<Vertex>>
-        get() = _adjacencyMap.values
-
-    override fun containsKey(key: Vertex): Boolean = _adjacencyMap.containsKey(key)
-    override fun containsValue(value: MutableSet<Vertex>): Boolean = _adjacencyMap.containsValue(value)
-    override fun get(key: Vertex): MutableSet<Vertex>? = _adjacencyMap[key]
-    override fun isEmpty(): Boolean = _adjacencyMap.isEmpty()
-    override fun clear() = _adjacencyMap.clear()
-    override fun put(key: Vertex, value: MutableSet<Vertex>): MutableSet<Vertex>? = _adjacencyMap.put(key, value)
-    override fun putAll(from: Map<out Vertex, MutableSet<Vertex>>) = _adjacencyMap.putAll(from)
-    override fun remove(key: Vertex): MutableSet<Vertex>? = _adjacencyMap.remove(key)
+        _adjacencyMap
+            .flatMap { entry -> entry.value.map { entry.key to it } }
+            .fold(0) { acc, pair -> (acc * 7 + pair.hashCode()) % Int.MAX_VALUE }
 }
