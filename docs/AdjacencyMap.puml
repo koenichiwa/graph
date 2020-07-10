@@ -2,6 +2,7 @@
 !include Interfaces.puml
 
 interface kotlin.collections.MutableMap
+note left: see kotlin [[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/ Map]]
 
 package adjacencymap {
     abstract class AdjacencyMapGraph<Vertex> {
