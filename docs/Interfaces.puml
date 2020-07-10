@@ -11,17 +11,14 @@ package baseinterfaces {
         + neighbors(vertex: Vertex): Set<Vertex>?
     }
 
-    interface Mutable<Vertex, EdgeValue>{
+    interface Mutable<Vertex>{
         + addVertex(vertex: Vertex): Boolean
         + removeVertex(vertex: Vertex): Boolean
-        + addEdge(from: Vertex, to: Vertex, value: EdgeValue?): Boolean
         + removeEdge(from: Vertex, to: Vertex): Boolean
     }
 
     interface Valued<Vertex, EdgeValue> {
         + getEdgeValue(from: Vertex, to: Vertex): EdgeValue?
-        + putEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
-        + removeEdgeValue(from: Vertex, to: Vertex): Boolean
     }
 }
 
@@ -37,6 +34,8 @@ ValuedGraph --> Valued
 
 interface ValuedMutableGraph<Vertex, EdgeValue>{
     + addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
+    + putEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
+    + removeEdgeValue(from: Vertex, to: Vertex): Boolean
 }
 ValuedMutableGraph --> Graph
 ValuedMutableGraph --> Mutable

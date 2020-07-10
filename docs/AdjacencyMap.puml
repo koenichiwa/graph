@@ -17,11 +17,10 @@ package adjacencymap {
     AdjacencyMapGraph --> kotlin.collections.MutableMap
     AdjacencyMapGraph --> Graph
 
-    abstract class MutableAdjacencyMapGraph<Vertex, EdgeValue> {
+    abstract class MutableAdjacencyMapGraph<Vertex> {
         + addVertex(vertex: Vertex): Boolean
         + removeVertex(vertex: Vertex): Boolean
         + removeEdge(from: Vertex, to: Vertex): Boolean
-        + addEdge(from: Vertex, to: Vertex, value: EdgeValue?): Boolean
     }
     MutableAdjacencyMapGraph --> Graph
     MutableAdjacencyMapGraph --> Mutable

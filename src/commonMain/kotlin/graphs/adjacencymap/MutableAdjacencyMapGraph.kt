@@ -5,7 +5,7 @@ import graphs.baseinterfaces.Mutable
 
 abstract class MutableAdjacencyMapGraph<Vertex, in EdgeValue> (isDirected: Boolean) :
     Graph<Vertex>,
-    Mutable<Vertex, EdgeValue>,
+    Mutable<Vertex>,
     AdjacencyMapGraph<Vertex>(isDirected) {
 
     override fun addVertex(vertex: Vertex): Boolean {
@@ -33,18 +33,6 @@ abstract class MutableAdjacencyMapGraph<Vertex, in EdgeValue> (isDirected: Boole
         val res = get(from)!!.remove(to)
         return if (!isDirected && res)
             get(to)!!.remove(from)
-        else res
-    }
-
-    override fun addEdge(from: Vertex, to: Vertex, value: EdgeValue?): Boolean {
-        if (!containsVertex(from))
-            return false
-        if (!containsVertex(to))
-            return false
-
-        val res = get(from)!!.add(to)
-        return if (!isDirected && res)
-            get(to)!!.add(from)
         else res
     }
 }
