@@ -6,7 +6,7 @@ import graphs.ValuedMutableGraph
 open class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue>(isDirected: Boolean) :
     ValuedGraph<Vertex, EdgeValue>,
     ValuedMutableGraph<Vertex, EdgeValue>,
-    MutableAdjacencyMapGraph<Vertex, EdgeValue>(isDirected) {
+    MutableAdjacencyMapGraph<Vertex>(isDirected) {
 
     private val _edgeValueMap = mutableMapOf<Pair<Vertex, Vertex>, EdgeValue>()
 

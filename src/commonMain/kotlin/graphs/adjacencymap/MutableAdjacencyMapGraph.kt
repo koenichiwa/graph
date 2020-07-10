@@ -3,7 +3,7 @@ package graphs.adjacencymap
 import graphs.baseinterfaces.Graph
 import graphs.baseinterfaces.Mutable
 
-abstract class MutableAdjacencyMapGraph<Vertex, in EdgeValue> (isDirected: Boolean) :
+abstract class MutableAdjacencyMapGraph<Vertex> (isDirected: Boolean) :
     Graph<Vertex>,
     Mutable<Vertex>,
     AdjacencyMapGraph<Vertex>(isDirected) {
