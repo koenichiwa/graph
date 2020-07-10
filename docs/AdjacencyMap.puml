@@ -13,7 +13,7 @@ package adjacencymap {
         + equals(other: Any?): Boolean
         + hashCode(): Int
     }
-    AdjacencyMapGraph --> MutableMap
+    AdjacencyMapGraph --> kotlin.collections.MutableMap
     AdjacencyMapGraph --> Graph
 
     abstract class MutableAdjacencyMapGraph<Vertex, EdgeValue> {
