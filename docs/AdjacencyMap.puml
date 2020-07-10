@@ -1,7 +1,7 @@
 @startuml
 !include Interfaces.puml
 
-interface MutableMap
+interface kotlin.collections.MutableMap
 
 package adjacencymap {
     abstract class AdjacencyMapGraph<Vertex> {
