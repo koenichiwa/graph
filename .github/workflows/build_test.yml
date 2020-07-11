@@ -9,10 +9,11 @@ on:
     branches: [ master, develop ]
   pull_request:
     branches: [ master, develop ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  ignore-paths:
+    - '**'
+    - '!**.kt'
+    - '!**.kts'
 jobs:
-  # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -21,6 +22,9 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - uses: lots0logs/gh-action-get-changed-files@2.1.4
+          with:
+              token: GITHUB_TOKEN
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: build
