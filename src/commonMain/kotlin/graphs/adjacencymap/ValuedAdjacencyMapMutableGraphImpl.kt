@@ -16,11 +16,11 @@ open class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue>(isDirected: Boo
         if (!containsVertex(to))
             return false
 
-        return if (!get(from)!!.add(to)) {
+        return if (!_adjacencyMap[from]!!.add(to)) {
             putEdgeValue(from, to, value)
             false
         } else if (!isDirected)
-            get(to)!!.add(from)
+            _adjacencyMap[to]!!.add(from)
         else true
     }
 

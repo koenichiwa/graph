@@ -1,9 +1,6 @@
 @startuml
 !include Interfaces.puml
 
-interface kotlin.collections.MutableMap
-note left: see kotlin [[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/ Map]]
-
 package adjacencymap {
     abstract class AdjacencyMapGraph<Vertex> {
         - _adjacencyMap : MutableMap<Vertex, MutableSet<Vertex>>
@@ -14,23 +11,22 @@ package adjacencymap {
         + equals(other: Any?): Boolean
         + hashCode(): Int
     }
-    AdjacencyMapGraph --> kotlin.collections.MutableMap
-    AdjacencyMapGraph --> Graph
+    AdjacencyMapGraph --|> Graph
 
     abstract class MutableAdjacencyMapGraph<Vertex> {
         + addVertex(vertex: Vertex): Boolean
         + removeVertex(vertex: Vertex): Boolean
         + removeEdge(from: Vertex, to: Vertex): Boolean
     }
-    MutableAdjacencyMapGraph --> Graph
-    MutableAdjacencyMapGraph --> Mutable
-    MutableAdjacencyMapGraph --> AdjacencyMapGraph
+    MutableAdjacencyMapGraph --|> Graph
+    MutableAdjacencyMapGraph --|> Mutable
+    MutableAdjacencyMapGraph --|> AdjacencyMapGraph
 
     class AdjacencyMapMutableGraphImpl<Vertex> {
         + addEdge(from: Vertex, to: Vertex): Boolean
     }
-    AdjacencyMapMutableGraphImpl --> MutableGraph
-    AdjacencyMapMutableGraphImpl --> MutableAdjacencyMapGraph
+    AdjacencyMapMutableGraphImpl --|> MutableGraph
+    AdjacencyMapMutableGraphImpl --|> MutableAdjacencyMapGraph
 
     class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue> {
         + addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
@@ -38,9 +34,9 @@ package adjacencymap {
         + putEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
         + removeEdgeValue(from: Vertex, to: Vertex): Boolean
     }
-    ValuedAdjacencyMapMutableGraphImpl --> ValuedGraph
-    ValuedAdjacencyMapMutableGraphImpl --> ValuedMutableGraph
-    ValuedAdjacencyMapMutableGraphImpl --> MutableAdjacencyMapGraph
+    ValuedAdjacencyMapMutableGraphImpl --|> ValuedGraph
+    ValuedAdjacencyMapMutableGraphImpl --|> ValuedMutableGraph
+    ValuedAdjacencyMapMutableGraphImpl --|> MutableAdjacencyMapGraph
 
 }
 

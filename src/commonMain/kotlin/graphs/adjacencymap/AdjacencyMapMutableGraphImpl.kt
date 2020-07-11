@@ -12,10 +12,10 @@ open class AdjacencyMapMutableGraphImpl<Vertex>(isDirected: Boolean) :
         if (!containsVertex(to))
             return false
 
-        return if (!get(from)!!.add(to))
+        return if (!_adjacencyMap[from]!!.add(to))
             false
         else if (!isDirected)
-            get(to)!!.add(from)
+            _adjacencyMap[to]!!.add(from)
         else true
     }
 }
