@@ -18,7 +18,6 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `cannot add edge to inexistent vertex`() {
-        TODO("DELETE THIS IMMEDIATELY")
         val graph = mutableGraphOf<Int>(false)
         graph.addVertex(0)
         assertFalse(graph.addEdge(0, 1))
