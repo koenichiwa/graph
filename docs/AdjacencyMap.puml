@@ -29,10 +29,10 @@ package adjacencymap {
     AdjacencyMapMutableGraphImpl --|> MutableAdjacencyMapGraph
 
     class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue> {
+        - _edgeValueMap = mutableMapOf<Pair<Vertex, Vertex>, EdgeValue>
         + addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
         + getEdgeValue(from: Vertex, to: Vertex): EdgeValue?
-        + putEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
-        + removeEdgeValue(from: Vertex, to: Vertex): Boolean
+        + updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
     }
     ValuedAdjacencyMapMutableGraphImpl --|> ValuedMutableGraph
     ValuedAdjacencyMapMutableGraphImpl --|> MutableAdjacencyMapGraph
