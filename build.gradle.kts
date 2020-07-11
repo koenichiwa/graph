@@ -15,7 +15,6 @@ kotlin {
     js()
 //    macosX64()
     linuxArm64()
-    linuxX64()
 
     sourceSets {
         // Common
