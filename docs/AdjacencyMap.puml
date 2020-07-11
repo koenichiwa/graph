@@ -34,7 +34,6 @@ package adjacencymap {
         + putEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
         + removeEdgeValue(from: Vertex, to: Vertex): Boolean
     }
-    ValuedAdjacencyMapMutableGraphImpl --|> ValuedGraph
     ValuedAdjacencyMapMutableGraphImpl --|> ValuedMutableGraph
     ValuedAdjacencyMapMutableGraphImpl --|> MutableAdjacencyMapGraph
 

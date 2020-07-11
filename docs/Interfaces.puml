@@ -37,8 +37,8 @@ interface ValuedMutableGraph<Vertex, EdgeValue>{
     + putEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
     + removeEdgeValue(from: Vertex, to: Vertex): Boolean
 }
-ValuedMutableGraph --|> Graph
+
 ValuedMutableGraph --|> Mutable
-ValuedMutableGraph --|> Valued
+ValuedMutableGraph --|> ValuedGraph
 
 @enduml

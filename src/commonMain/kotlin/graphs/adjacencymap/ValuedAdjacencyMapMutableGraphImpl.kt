@@ -1,10 +1,8 @@
 package graphs.adjacencymap
 
-import graphs.ValuedGraph
 import graphs.ValuedMutableGraph
 
 open class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue>(isDirected: Boolean) :
-    ValuedGraph<Vertex, EdgeValue>,
     ValuedMutableGraph<Vertex, EdgeValue>,
     MutableAdjacencyMapGraph<Vertex>(isDirected) {
 
@@ -16,27 +14,35 @@ open class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue>(isDirected: Boo
         if (!containsVertex(to))
             return false
 
-        return if (!_adjacencyMap[from]!!.add(to)) {
-            putEdgeValue(from, to, value)
-            false
-        } else if (!isDirected)
-            _adjacencyMap[to]!!.add(from)
-        else true
+        val res = _adjacencyMap[from]!!.add(to)
+        if (!res)
+            return false
+
+        if (!isDirected) {
+            if (!_adjacencyMap[to]!!.add(from))
+                return false
+
+            _edgeValueMap[to to from] = value
+        }
+        _edgeValueMap[from to to] = value
+        return true
     }
 
     override fun getEdgeValue(from: Vertex, to: Vertex): EdgeValue? =
         _edgeValueMap[from to to]
 
-    override fun putEdgeValue(from: Vertex, to: Vertex, value: EdgeValue) {
-        _edgeValueMap[from to to] = value
-        if (!isDirected)
-            _edgeValueMap[to to from] = value
+    override fun updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue) {
+        if (isAdjacent(from, to)) {
+            _edgeValueMap[from to to] = value
+            if (!isDirected)
+                _edgeValueMap[to to from] = value
+        }
     }
 
-    override fun removeEdgeValue(from: Vertex, to: Vertex): Boolean {
-        val res = _edgeValueMap.remove(from to to) != null
+    override fun removeEdge(from: Vertex, to: Vertex): Boolean {
+        _edgeValueMap.remove(from to to)
         if (!isDirected)
-            return res && (_edgeValueMap.remove(to to from) != null)
-        return res
+            _edgeValueMap.remove(to to from)
+        return super.removeEdge(from, to)
     }
 }
