@@ -10,7 +10,7 @@ class AdjacencyMapMutableGraphImplTest {
     @Test
     fun `addVertex works`() {
         val graph = mutableGraphOf<Int>(false)
-        assertEquals(false, graph.containsVertex(0))
+        assertFalse(graph.containsVertex(0))
         assertTrue(graph.addVertex(0))
         assertTrue(graph.containsVertex(0))
         assertFalse(graph.addVertex(0))
