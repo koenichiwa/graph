@@ -1,0 +1,43 @@
+@startuml
+
+skinparam linetype ortho
+
+package baseinterfaces {
+    interface Graph<Vertex> {
+        + isDirected: Boolean
+
+        + containsVertex(vertex: Vertex): Boolean
+        + isAdjacent(from: Vertex, to: Vertex): Boolean
+        + neighbors(vertex: Vertex): Set<Vertex>?
+    }
+
+    interface Mutable<Vertex>{
+        + addVertex(vertex: Vertex): Boolean
+        + removeVertex(vertex: Vertex): Boolean
+        + removeEdge(from: Vertex, to: Vertex): Boolean
+    }
+
+    interface Valued<Vertex, EdgeValue> {
+        + getEdgeValue(from: Vertex, to: Vertex): EdgeValue?
+    }
+}
+
+interface MutableGraph<Vertex>{
+    + addEdge(from: Vertex, to: Vertex): Boolean
+}
+MutableGraph --|> Graph
+MutableGraph --|> Mutable
+
+interface ValuedGraph<Vertex, EdgeValue>
+ValuedGraph --|> Graph
+ValuedGraph --|> Valued
+
+interface ValuedMutableGraph<Vertex, EdgeValue>{
+    + addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
+    + updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
+}
+
+ValuedMutableGraph --|> Mutable
+ValuedMutableGraph --|> ValuedGraph
+
+@enduml

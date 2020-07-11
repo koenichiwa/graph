@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.koenichiwa"
-version = "1.0-SNAPSHOT"
+version = "0.2.0"
 
 repositories {
     mavenCentral()
@@ -13,6 +13,7 @@ kotlin {
     /* Targets configuration omitted. 
     *  To find out how to configure the targets, please follow the link:
     *  https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets */
+    jvm()
 
     sourceSets {
         val commonMain by getting {
@@ -24,6 +25,18 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+            }
+        }
+        jvm().compilations["main"].defaultSourceSet {
+            dependsOn(commonMain)
+            dependencies {
+                implementation(kotlin("stdlib-jdk8"))
+            }
+        }
+        jvm().compilations["test"].defaultSourceSet {
+            dependsOn(commonTest)
+            dependencies {
+                implementation(kotlin("test-junit"))
             }
         }
     }

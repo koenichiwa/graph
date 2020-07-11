@@ -1,0 +1,42 @@
+@startuml
+!include Interfaces.puml
+
+package adjacencymap {
+    abstract class AdjacencyMapGraph<Vertex> {
+        - _adjacencyMap : MutableMap<Vertex, MutableSet<Vertex>>
+
+        + containsVertex(vertex: Vertex): Boolean
+        + isAdjacent(from: Vertex, to: Vertex): Boolean
+        + neighbors(vertex: Vertex): Set<Vertex>?
+        + equals(other: Any?): Boolean
+        + hashCode(): Int
+    }
+    AdjacencyMapGraph --|> Graph
+
+    abstract class MutableAdjacencyMapGraph<Vertex> {
+        + addVertex(vertex: Vertex): Boolean
+        + removeVertex(vertex: Vertex): Boolean
+        + removeEdge(from: Vertex, to: Vertex): Boolean
+    }
+    MutableAdjacencyMapGraph --|> Graph
+    MutableAdjacencyMapGraph --|> Mutable
+    MutableAdjacencyMapGraph --|> AdjacencyMapGraph
+
+    class AdjacencyMapMutableGraphImpl<Vertex> {
+        + addEdge(from: Vertex, to: Vertex): Boolean
+    }
+    AdjacencyMapMutableGraphImpl --|> MutableGraph
+    AdjacencyMapMutableGraphImpl --|> MutableAdjacencyMapGraph
+
+    class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue> {
+        - _edgeValueMap = mutableMapOf<Pair<Vertex, Vertex>, EdgeValue>
+        + addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
+        + getEdgeValue(from: Vertex, to: Vertex): EdgeValue?
+        + updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
+    }
+    ValuedAdjacencyMapMutableGraphImpl --|> ValuedMutableGraph
+    ValuedAdjacencyMapMutableGraphImpl --|> MutableAdjacencyMapGraph
+
+}
+
+@enduml
