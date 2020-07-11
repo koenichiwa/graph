@@ -21,6 +21,7 @@ abstract class AdjacencyMapGraph<Vertex>(override val isDirected: Boolean) : Gra
 
     override fun hashCode(): Int =
         _adjacencyMap
-            .flatMap { entry -> entry.value.map { entry.key to it } }
+            .asSequence()
+            .flatMap { entry -> entry.value.asSequence().map { entry.key to it } }
             .fold(0) { acc, pair -> (acc * 7 + pair.hashCode()) % Int.MAX_VALUE }
 }

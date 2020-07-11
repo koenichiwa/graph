@@ -25,20 +25,20 @@ package baseinterfaces {
 interface MutableGraph<Vertex>{
     + addEdge(from: Vertex, to: Vertex): Boolean
 }
-MutableGraph --> Graph
-MutableGraph --> Mutable
+MutableGraph --|> Graph
+MutableGraph --|> Mutable
 
 interface ValuedGraph<Vertex, EdgeValue>
-ValuedGraph --> Graph
-ValuedGraph --> Valued
+ValuedGraph --|> Graph
+ValuedGraph --|> Valued
 
 interface ValuedMutableGraph<Vertex, EdgeValue>{
     + addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
     + putEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
     + removeEdgeValue(from: Vertex, to: Vertex): Boolean
 }
-ValuedMutableGraph --> Graph
-ValuedMutableGraph --> Mutable
-ValuedMutableGraph --> Valued
+ValuedMutableGraph --|> Graph
+ValuedMutableGraph --|> Mutable
+ValuedMutableGraph --|> Valued
 
 @enduml
