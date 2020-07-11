@@ -4,7 +4,7 @@ import graphs.MutableGraph
 
 open class AdjacencyMapMutableGraphImpl<Vertex>(isDirected: Boolean) :
     MutableGraph<Vertex>,
-    MutableAdjacencyMapGraph<Vertex, Nothing>(isDirected) {
+    MutableAdjacencyMapGraph<Vertex>(isDirected) {
 
     override fun addEdge(from: Vertex, to: Vertex): Boolean {
         if (!containsVertex(from))
