@@ -11,8 +11,9 @@ class AdjacencyMapMutableGraphImplTest {
     fun `addVertex works`() {
         val graph = mutableGraphOf<Int>(false)
         assertEquals(false, graph.containsVertex(0))
-        graph.addVertex(0)
-        assertEquals(true, graph.addVertex(0))
+        assertTrue(graph.addVertex(0))
+        assertTrue(graph.containsVertex(0))
+        assertFalse(graph.addVertex(0))
     }
 
     @Test
@@ -78,7 +79,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `removeVertex works`() {
-        val graph = mutableGraphOf<Int>(true)
+        val graph = mutableGraphOf<Int>(false)
         graph.addVertex(0)
         assertTrue(graph.containsVertex(0))
         graph.addVertex(1)
@@ -94,7 +95,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `removeEdge works`() {
-        val graph = mutableGraphOf<Int>(true)
+        val graph = mutableGraphOf<Int>(false)
         graph.addVertex(0)
         assertTrue(graph.containsVertex(0))
         graph.addVertex(1)
