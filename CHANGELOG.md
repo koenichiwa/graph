@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Create test cases for breathfirst and depthfirst search.
+- add @Supress tags for protected values
+### Changed
+- Fix instantiation to be more ergonomic.
+- Throw exceptions on addEdge with nonexistent vertex.
+- Gradle and kotlin plugin version
+
+### Removed
+- Remove @ExperimentalStdlibApi tags for non experimental functions
 
 ## [0.2.0] - 09-07-2020
 ### Added
