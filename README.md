@@ -1,3 +1,4 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/koenichiwa/graph/CI)
 # Graph
 ## Goal
 - Implement generic, reusable implementations of the graph data-structure for Kotlin multi-platform
