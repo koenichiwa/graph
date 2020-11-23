@@ -1,12 +1,13 @@
 plugins {
     kotlin("multiplatform") version "1.4.20"
-    id("com.github.roroche.plantuml") version "1.0.2"
+    id("maven-publish")
 }
 
 group = "com.koenichiwa"
 version = "0.2.0"
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -14,7 +15,7 @@ kotlin {
     jvm()
     js()
 //    macosX64()
-    linuxArm64()
+//    linuxArm64()
 
     sourceSets {
         // Common
@@ -60,18 +61,16 @@ kotlin {
             }
         }
 
+        /*
         // Mac
-//        macosX64().compilations["main"].defaultSourceSet {
-//            dependsOn(commonMain)
-//        }
+        macosX64().compilations["main"].defaultSourceSet {
+            dependsOn(commonMain)
+        }
 
+        //Linux
         linuxX64().compilations["main"].defaultSourceSet {
             dependsOn(commonMain)
         }
+        */
     }
-}
-
-classDiagram {
-    packageName = "com.koenichiwa.graphs"
-    outputFile = project.file("/diagrams/class_diagram.plantuml")
 }
