@@ -3,7 +3,9 @@ package graphs.adjacencymatrix
 import graphs.baseinterfaces.Graph
 
 abstract class AdjacencyMatrixGraph<Vertex>(override val isDirected: Boolean) : Graph<Vertex> {
+    @Suppress("PropertyName")
     protected val _vertexList = mutableListOf<Vertex>()
+    @Suppress("PropertyName")
     protected val _adjacencyMatrix = mutableListOf<MutableList<Boolean>>()
     override fun containsVertex(vertex: Vertex): Boolean =
         _vertexList.contains(vertex)
