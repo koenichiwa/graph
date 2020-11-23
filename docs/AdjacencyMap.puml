@@ -18,7 +18,6 @@ package adjacencymap {
         + removeVertex(vertex: Vertex): Boolean
         + removeEdge(from: Vertex, to: Vertex): Boolean
     }
-    MutableAdjacencyMapGraph --|> Graph
     MutableAdjacencyMapGraph --|> Mutable
     MutableAdjacencyMapGraph --|> AdjacencyMapGraph
 
@@ -29,7 +28,7 @@ package adjacencymap {
     AdjacencyMapMutableGraphImpl --|> MutableAdjacencyMapGraph
 
     class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue> {
-        - _edgeValueMap = mutableMapOf<Pair<Vertex, Vertex>, EdgeValue>
+        - _edgeValueMap = MutableMap<Pair<Vertex, Vertex>, EdgeValue>
         + addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
         + getEdgeValue(from: Vertex, to: Vertex): EdgeValue?
         + updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)

@@ -1,11 +1,9 @@
 package graphs.adjacencymap
 
-import graphs.baseinterfaces.Graph
 import graphs.baseinterfaces.Mutable
 import graphs.exceptions.VertexNotFoundException
 
 abstract class MutableAdjacencyMapGraph<Vertex> (isDirected: Boolean) :
-    Graph<Vertex>,
     Mutable<Vertex>,
     AdjacencyMapGraph<Vertex>(isDirected) {
 
