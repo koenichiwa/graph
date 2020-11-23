@@ -53,7 +53,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
     }
 
     @Test
-    fun `cannot add edge to inexistent vertex`() {
+    fun `cannot add edge to nonexistent vertex`() {
         val graph = mutableValuedGraphOf<Int, Int?>(false)
         graph.addVertex(0)
         assertFalse(graph.addEdge(0, 1, null))
@@ -62,7 +62,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
     }
 
     @Test
-    fun `cannot add edge from inexistent vertex`() {
+    fun `cannot add edge from nonexistent vertex`() {
         val graph = mutableValuedGraphOf<Int, Int?>(false)
         graph.addVertex(1)
         assertFalse(graph.addEdge(0, 1, null))
