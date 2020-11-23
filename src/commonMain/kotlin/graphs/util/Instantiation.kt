@@ -9,10 +9,10 @@ import graphs.baseinterfaces.Graph
 
 fun <Vertex, EdgeValue> mutableValuedGraphOf(
     isDirected: Boolean = true,
-    vararg vertexEdgePairs: Pair<Vertex, MutableMap<Vertex, EdgeValue>>
+    vararg vertexEdgePairs: Pair<Vertex, Map<Vertex, EdgeValue>>
 ): ValuedMutableGraph<Vertex, EdgeValue> = mutableValuedGraphOf(
     isDirected,
-    mutableMapOf<Vertex, MutableMap<Vertex, EdgeValue>>()
+    mutableMapOf<Vertex, Map<Vertex, EdgeValue>>()
         .also { it.putAll(vertexEdgePairs) }
 )
 

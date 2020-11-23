@@ -1,9 +1,6 @@
-package graphs.traversal
+package graphs.util
 
 import graphs.exceptions.GraphException
-import graphs.util.bfs
-import graphs.util.dfs
-import graphs.util.mutableGraphOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith

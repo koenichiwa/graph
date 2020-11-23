@@ -1,36 +1,17 @@
 package graphs.adjacencymap
 
 import graphs.exceptions.VertexNotFoundException
-import graphs.util.graphOf
-import graphs.util.mutableGraphOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class AdjacencyMapMutableGraphImplTest {
-    @Test
-    fun `instantiation works()`() {
-        val graph = graphOf(
-            true,
-            1 to setOf(2, 3, 4),
-            2 to setOf(3, 4),
-            3 to setOf(4),
-            4 to emptySet()
-        )
-
-        assertTrue { (1..4).all { graph.containsVertex(it) } }
-
-        assertEquals(graph.neighbors(1), setOf(2, 3, 4))
-        assertEquals(graph.neighbors(2), setOf(3, 4))
-        assertEquals(graph.neighbors(3), setOf(4))
-        assertEquals(graph.neighbors(4), emptySet())
-    }
+class MutableAdjacencyMapGraphImplTest {
 
     @Test
     fun `addVertex works`() {
-        val graph = mutableGraphOf<Int>(false)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(false)
         assertFalse(graph.containsVertex(0))
         assertTrue(graph.addVertex(0))
         assertTrue(graph.containsVertex(0))
@@ -39,7 +20,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `cannot add edge to nonexistent vertex`() {
-        val graph = mutableGraphOf<Int>(false)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(false)
         graph.addVertex(0)
         assertFailsWith(VertexNotFoundException::class) { graph.addEdge(0, 1) }
         graph.addVertex(1)
@@ -48,7 +29,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `cannot add edge from nonexistent vertex`() {
-        val graph = mutableGraphOf<Int>(false)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(false)
         graph.addVertex(1)
         assertFailsWith(VertexNotFoundException::class) { graph.addEdge(0, 1) }
         graph.addVertex(0)
@@ -57,7 +38,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `isAdjacent works`() {
-        val graph = mutableGraphOf<Int>(false)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(false)
         graph.addVertex(0)
         graph.addVertex(1)
         assertFalse(graph.isAdjacent(0, 1))
@@ -67,7 +48,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `neighbors works`() {
-        val graph = mutableGraphOf<Int>(false)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(false)
         graph.addVertex(0)
         graph.addVertex(1)
         graph.addVertex(2)
@@ -80,7 +61,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `undirected works`() {
-        val graph = mutableGraphOf<Int>(false)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(false)
         graph.addVertex(0)
         graph.addVertex(1)
         graph.addEdge(0, 1)
@@ -90,7 +71,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `directed works`() {
-        val graph = mutableGraphOf<Int>(true)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(true)
         graph.addVertex(0)
         graph.addVertex(1)
         graph.addEdge(0, 1)
@@ -100,7 +81,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `removeVertex works`() {
-        val graph = mutableGraphOf<Int>(false)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(false)
         graph.addVertex(0)
         assertTrue(graph.containsVertex(0))
         graph.addVertex(1)
@@ -116,7 +97,7 @@ class AdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `removeEdge works`() {
-        val graph = mutableGraphOf<Int>(false)
+        val graph = MutableAdjacencyMapGraphImpl<Int>(false)
         graph.addVertex(0)
         assertTrue(graph.containsVertex(0))
         graph.addVertex(1)
