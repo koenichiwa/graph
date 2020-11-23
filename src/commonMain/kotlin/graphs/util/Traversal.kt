@@ -2,7 +2,6 @@ package graphs.util
 
 import graphs.baseinterfaces.Graph
 
-@ExperimentalStdlibApi
 fun <Vertex> Graph<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
@@ -23,7 +22,6 @@ fun <Vertex> Graph<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
     return traversalList
 }
 
-@ExperimentalStdlibApi
 fun <Vertex> Graph<Vertex>.bfs(startVertex: Vertex): List<Vertex> {
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
