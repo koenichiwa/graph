@@ -1,6 +1,7 @@
 package graphs.adjacencymap
 
 import graphs.ValuedMutableGraph
+import graphs.exceptions.VertexNotFoundException
 
 open class MutableValuedAdjacencyMapGraphImpl<Vertex, EdgeValue>(isDirected: Boolean) :
     ValuedMutableGraph<Vertex, EdgeValue>,
@@ -11,9 +12,9 @@ open class MutableValuedAdjacencyMapGraphImpl<Vertex, EdgeValue>(isDirected: Boo
 
     override fun addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean {
         if (!containsVertex(from))
-            return false
+            throw VertexNotFoundException(from)
         if (!containsVertex(to))
-            return false
+            throw VertexNotFoundException(to)
 
         val res = _adjacencyMap[from]!!.add(to)
         if (!res)
