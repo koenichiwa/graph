@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.3.72"
+    kotlin("multiplatform") version "1.4.20"
     id("com.github.roroche.plantuml") version "1.0.2"
 }
 
