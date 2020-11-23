@@ -20,11 +20,6 @@ class MutableValuedAdjacencyMatrixImpl<Vertex, EdgeValue>(isAdjacent: Boolean) :
             _adjacencyMatrix[toIndex][fromIndex] = true
             _edgeValueMap[from to to] = value
         }
-        val x: Array<Array<Array<Int>>> = Array(5) {
-            Array(5) {
-                IntArray(5).toTypedArray()
-            }
-        }
         return true
     }
 
