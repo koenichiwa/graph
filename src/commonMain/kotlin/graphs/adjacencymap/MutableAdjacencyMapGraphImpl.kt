@@ -2,7 +2,7 @@ package graphs.adjacencymap
 
 import graphs.MutableGraph
 
-open class AdjacencyMapMutableGraphImpl<Vertex>(isDirected: Boolean) :
+open class MutableAdjacencyMapGraphImpl<Vertex>(isDirected: Boolean) :
     MutableGraph<Vertex>,
     MutableAdjacencyMapGraph<Vertex>(isDirected) {
 

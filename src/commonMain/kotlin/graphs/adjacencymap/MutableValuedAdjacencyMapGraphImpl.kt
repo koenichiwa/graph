@@ -2,7 +2,7 @@ package graphs.adjacencymap
 
 import graphs.ValuedMutableGraph
 
-open class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue>(isDirected: Boolean) :
+open class MutableValuedAdjacencyMapGraphImpl<Vertex, EdgeValue>(isDirected: Boolean) :
     ValuedMutableGraph<Vertex, EdgeValue>,
     MutableAdjacencyMapGraph<Vertex>(isDirected) {
 
@@ -31,12 +31,14 @@ open class ValuedAdjacencyMapMutableGraphImpl<Vertex, EdgeValue>(isDirected: Boo
     override fun getEdgeValue(from: Vertex, to: Vertex): EdgeValue? =
         _edgeValueMap[from to to]
 
-    override fun updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue) {
+    override fun updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue): Boolean {
         if (isAdjacent(from, to)) {
             _edgeValueMap[from to to] = value
             if (!isDirected)
                 _edgeValueMap[to to from] = value
+            return true
         }
+        return false
     }
 
     override fun removeEdge(from: Vertex, to: Vertex): Boolean {

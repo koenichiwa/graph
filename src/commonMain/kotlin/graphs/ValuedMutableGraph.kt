@@ -7,5 +7,5 @@ interface ValuedMutableGraph <Vertex, EdgeValue> :
     ValuedGraph<Vertex, EdgeValue> {
 
     fun addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
-    fun updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue)
+    fun updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue): Boolean
 }
