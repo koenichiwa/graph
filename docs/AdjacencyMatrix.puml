@@ -1,0 +1,42 @@
+@startuml
+!include Interfaces.puml
+
+package adjacencymatrix<Vertex>{
+        abstract class AdjacencyMatrixGraph<Vertex> {
+            - _vertexList : List<Vertex>
+            - _adjacencyMatrix : List<List<Boolean>>
+
+            + containsVertex(vertex: Vertex) : Boolean
+            + isAdjacent(from: Vertex, to: Vertex) : Boolean
+            + neighbors(vertex: Vertex): Set<Vertex>?
+        }
+        AdjacencyMatrixGraph --|> Graph
+
+        abstract class MutableAdjacencyMatrixGraph<Vertex> {
+            + addVertex(vertex: Vertex): Boolean
+            + removeVertex(vertex: Vertex): Boolean
+            + removeEdge(from: Vertex, to: Vertex): Boolean
+        }
+        MutableAdjacencyMatrixGraph --|> Mutable
+        MutableAdjacencyMatrixGraph --|> AdjacencyMatrixGraph
+
+        class MutableAdjacencyMatrixGraphImpl<Vertex> {
+            + addEdge(from: Vertex, to: Vertex): Boolean
+        }
+
+        MutableAdjacencyMatrixGraphImpl --|> MutableGraph
+        MutableAdjacencyMatrixGraphImpl --|> MutableAdjacencyMatrixGraph
+
+        class MutableValuedAdjacencyMatrixGraphImpl<Vertex, EdgeValue> {
+            - _edgeValueMap: Map<Pair<Vertex, Vertex>, EdgeValue>
+
+            + addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean
+            + updateEdgeValue(from: Vertex, to: Vertex, value: EdgeValue): Boolean
+            + getEdgeValue(from: Vertex, to: Vertex): EdgeValue?
+        }
+
+        MutableValuedAdjacencyMatrixGraphImpl --|> ValuedMutableGraph
+        MutableValuedAdjacencyMatrixGraphImpl --|> MutableAdjacencyMatrixGraph
+}
+
+@enduml

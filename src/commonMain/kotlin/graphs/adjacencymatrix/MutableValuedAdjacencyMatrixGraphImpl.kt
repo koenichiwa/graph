@@ -2,9 +2,9 @@ package graphs.adjacencymatrix
 
 import graphs.ValuedMutableGraph
 
-class MutableValuedAdjacencyMatrixImpl<Vertex, EdgeValue>(isAdjacent: Boolean) :
+class MutableValuedAdjacencyMatrixGraphImpl<Vertex, EdgeValue>(isAdjacent: Boolean) :
     ValuedMutableGraph<Vertex, EdgeValue>,
-    MutableAdjacencyMatrix<Vertex>(isAdjacent) {
+    MutableAdjacencyMatrixGraph<Vertex>(isAdjacent) {
     private val _edgeValueMap = mutableMapOf<Pair<Vertex, Vertex>, EdgeValue>()
     override fun addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean {
         val fromIndex = _vertexList.indexOf(from)

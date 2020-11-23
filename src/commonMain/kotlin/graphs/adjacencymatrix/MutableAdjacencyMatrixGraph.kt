@@ -2,7 +2,7 @@ package graphs.adjacencymatrix
 
 import graphs.baseinterfaces.Mutable
 
-abstract class MutableAdjacencyMatrix<Vertex>(isDirected: Boolean) :
+abstract class MutableAdjacencyMatrixGraph<Vertex>(isDirected: Boolean) :
     Mutable<Vertex>,
     AdjacencyMatrixGraph<Vertex>(isDirected) {
 

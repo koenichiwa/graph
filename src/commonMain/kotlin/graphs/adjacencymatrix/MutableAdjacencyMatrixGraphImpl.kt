@@ -2,9 +2,9 @@ package graphs.adjacencymatrix
 
 import graphs.MutableGraph
 
-open class MutableAdjacencyMatrixImpl<Vertex>(isDirected: Boolean) :
+open class MutableAdjacencyMatrixGraphImpl<Vertex>(isDirected: Boolean) :
     MutableGraph<Vertex>,
-    MutableAdjacencyMatrix<Vertex>(isDirected) {
+    MutableAdjacencyMatrixGraph<Vertex>(isDirected) {
     override fun addEdge(from: Vertex, to: Vertex): Boolean {
         val fromIndex = _vertexList.indexOf(from)
         if (fromIndex < 0)
