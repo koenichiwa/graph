@@ -1,16 +1,17 @@
 package graphs.adjacencymap
 
 import graphs.MutableGraph
+import graphs.exceptions.VertexNotFoundException
 
-open class AdjacencyMapMutableGraphImpl<Vertex>(isDirected: Boolean) :
+open class MutableAdjacencyMapGraphImpl<Vertex>(isDirected: Boolean) :
     MutableGraph<Vertex>,
     MutableAdjacencyMapGraph<Vertex>(isDirected) {
 
     override fun addEdge(from: Vertex, to: Vertex): Boolean {
         if (!containsVertex(from))
-            return false
+            throw VertexNotFoundException(from)
         if (!containsVertex(to))
-            return false
+            throw VertexNotFoundException(to)
 
         return if (!_adjacencyMap[from]!!.add(to))
             false

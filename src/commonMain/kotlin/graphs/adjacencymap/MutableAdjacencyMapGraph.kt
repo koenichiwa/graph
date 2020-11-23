@@ -2,6 +2,7 @@ package graphs.adjacencymap
 
 import graphs.baseinterfaces.Graph
 import graphs.baseinterfaces.Mutable
+import graphs.exceptions.VertexNotFoundException
 
 abstract class MutableAdjacencyMapGraph<Vertex> (isDirected: Boolean) :
     Graph<Vertex>,
@@ -26,9 +27,9 @@ abstract class MutableAdjacencyMapGraph<Vertex> (isDirected: Boolean) :
 
     override fun removeEdge(from: Vertex, to: Vertex): Boolean {
         if (!containsVertex(from))
-            return false
+            throw VertexNotFoundException(from)
         if (!containsVertex(to))
-            return false
+            throw VertexNotFoundException(to)
 
         val res = _adjacencyMap[from]!!.remove(to)
         return if (!isDirected && res)

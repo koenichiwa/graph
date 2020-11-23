@@ -1,9 +1,12 @@
 package graphs.util
 
 import graphs.baseinterfaces.Graph
+import graphs.exceptions.VertexNotFoundException
 
-@ExperimentalStdlibApi
 fun <Vertex> Graph<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
+    if (!containsVertex(startVertex))
+        throw VertexNotFoundException(startVertex)
+
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
     val stack = ArrayDeque<Vertex>()
@@ -23,8 +26,10 @@ fun <Vertex> Graph<Vertex>.dfs(startVertex: Vertex): List<Vertex> {
     return traversalList
 }
 
-@ExperimentalStdlibApi
 fun <Vertex> Graph<Vertex>.bfs(startVertex: Vertex): List<Vertex> {
+    if (!containsVertex(startVertex))
+        throw VertexNotFoundException(startVertex)
+
     val traversalList = mutableListOf<Vertex>()
     val visitedMap = mutableMapOf<Vertex, Boolean>().withDefault { false }
     val queue = ArrayDeque<Vertex>()

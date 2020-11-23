@@ -1,5 +1,6 @@
 package graphs.adjacencymap
 
+import graphs.util.graphOf
 import graphs.util.mutableGraphOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -7,6 +8,24 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class AdjacencyMapMutableGraphImplTest {
+    @Test
+    fun `instantiation works()`() {
+        val graph = graphOf(
+            true,
+            1 to setOf(2, 3, 4),
+            2 to setOf(3, 4),
+            3 to setOf(4),
+            4 to emptySet()
+        )
+
+        assertTrue { (1..4).all { graph.containsVertex(it) } }
+
+        assertEquals(graph.neighbors(1), setOf(2, 3, 4))
+        assertEquals(graph.neighbors(2), setOf(3, 4))
+        assertEquals(graph.neighbors(3), setOf(4))
+        assertEquals(graph.neighbors(4), emptySet())
+    }
+
     @Test
     fun `addVertex works`() {
         val graph = mutableGraphOf<Int>(false)
@@ -17,7 +36,7 @@ class AdjacencyMapMutableGraphImplTest {
     }
 
     @Test
-    fun `cannot add edge to inexistent vertex`() {
+    fun `cannot add edge to nonexistent vertex`() {
         val graph = mutableGraphOf<Int>(false)
         graph.addVertex(0)
         assertFalse(graph.addEdge(0, 1))
@@ -26,7 +45,7 @@ class AdjacencyMapMutableGraphImplTest {
     }
 
     @Test
-    fun `cannot add edge from inexistent vertex`() {
+    fun `cannot add edge from nonexistent vertex`() {
         val graph = mutableGraphOf<Int>(false)
         graph.addVertex(1)
         assertFalse(graph.addEdge(0, 1))

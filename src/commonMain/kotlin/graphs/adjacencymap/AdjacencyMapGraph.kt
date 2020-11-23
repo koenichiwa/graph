@@ -3,7 +3,7 @@ package graphs.adjacencymap
 import graphs.baseinterfaces.Graph
 
 abstract class AdjacencyMapGraph<Vertex>(override val isDirected: Boolean) : Graph<Vertex> {
-
+    @Suppress("PropertyName")
     protected val _adjacencyMap = mutableMapOf<Vertex, MutableSet<Vertex>>()
 
     override fun containsVertex(vertex: Vertex): Boolean =
