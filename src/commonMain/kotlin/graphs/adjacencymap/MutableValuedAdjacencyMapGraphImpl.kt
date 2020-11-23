@@ -6,6 +6,7 @@ open class MutableValuedAdjacencyMapGraphImpl<Vertex, EdgeValue>(isDirected: Boo
     ValuedMutableGraph<Vertex, EdgeValue>,
     MutableAdjacencyMapGraph<Vertex>(isDirected) {
 
+    @Suppress("PropertyName")
     private val _edgeValueMap = mutableMapOf<Pair<Vertex, Vertex>, EdgeValue>()
 
     override fun addEdge(from: Vertex, to: Vertex, value: EdgeValue): Boolean {
