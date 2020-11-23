@@ -1,4 +1,4 @@
-package graphs.adjacencymap
+package graphs.traversal
 
 import graphs.exceptions.GraphException
 import graphs.util.bfs

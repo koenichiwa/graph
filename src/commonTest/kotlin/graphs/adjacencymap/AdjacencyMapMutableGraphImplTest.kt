@@ -1,9 +1,11 @@
 package graphs.adjacencymap
 
+import graphs.exceptions.VertexNotFoundException
 import graphs.util.graphOf
 import graphs.util.mutableGraphOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -39,7 +41,7 @@ class AdjacencyMapMutableGraphImplTest {
     fun `cannot add edge to nonexistent vertex`() {
         val graph = mutableGraphOf<Int>(false)
         graph.addVertex(0)
-        assertFalse(graph.addEdge(0, 1))
+        assertFailsWith(VertexNotFoundException::class) { graph.addEdge(0, 1) }
         graph.addVertex(1)
         assertTrue(graph.addEdge(0, 1))
     }
@@ -48,7 +50,7 @@ class AdjacencyMapMutableGraphImplTest {
     fun `cannot add edge from nonexistent vertex`() {
         val graph = mutableGraphOf<Int>(false)
         graph.addVertex(1)
-        assertFalse(graph.addEdge(0, 1))
+        assertFailsWith(VertexNotFoundException::class) { graph.addEdge(0, 1) }
         graph.addVertex(0)
         assertTrue(graph.addEdge(0, 1))
     }
