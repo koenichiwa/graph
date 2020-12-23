@@ -1,4 +1,4 @@
-package graphs.adjacencymap
+package graphs.adjacencymatrix
 
 import graphs.exceptions.VertexNotFoundException
 import graphs.util.mutableValuedGraphOf
@@ -10,10 +10,10 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class ValuedAdjacencyMapMutableGraphImplTest {
+class MutableValuedAdjacencyMatrixGraphImplTest {
     @Test
     fun `addVertex works`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int>(false)
         assertEquals(false, graph.containsVertex(0))
         assertTrue(graph.addVertex(0))
         assertTrue(graph.containsVertex(0))
@@ -22,7 +22,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `cannot add edge to nonexistent vertex`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int?>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int?>(false)
         graph.addVertex(0)
         assertFailsWith(VertexNotFoundException::class) { graph.addEdge(0, 1, null) }
         graph.addVertex(1)
@@ -31,7 +31,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `cannot add edge from nonexistent vertex`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int?>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int?>(false)
         graph.addVertex(1)
         assertFailsWith(VertexNotFoundException::class) { graph.addEdge(0, 1, null) }
         graph.addVertex(0)
@@ -40,7 +40,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `isAdjacent works`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int?>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int?>(false)
         graph.addVertex(0)
         graph.addVertex(1)
         assertFalse(graph.isAdjacent(0, 1))
@@ -50,7 +50,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `neighbors works`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int?>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int?>(false)
         graph.addVertex(0)
         graph.addVertex(1)
         graph.addVertex(2)
@@ -63,7 +63,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `undirected works`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int?>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int?>(false)
         graph.addVertex(0)
         graph.addVertex(1)
         graph.addEdge(0, 1, null)
@@ -73,7 +73,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `directed works`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int?>(true)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int?>(true)
         graph.addVertex(0)
         graph.addVertex(1)
         graph.addEdge(0, 1, null)
@@ -83,7 +83,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `removeVertex works`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int?>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int?>(false)
         graph.addVertex(0)
         assertTrue(graph.containsVertex(0))
         graph.addVertex(1)
@@ -99,7 +99,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
 
     @Test
     fun `removeEdge works`() {
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int?>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int?>(false)
         graph.addVertex(0)
         assertTrue(graph.containsVertex(0))
         graph.addVertex(1)
@@ -117,7 +117,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
     fun `getEdgeValue works`() {
         val value = Random.nextInt()
         val value2 = Random.nextInt()
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int>(false)
         graph.addVertex(0)
         graph.addVertex(1)
         assertNull(graph.getEdgeValue(0, 1))
@@ -140,7 +140,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
     fun `updateEdgeValue works`() {
         val value = Random.nextInt()
         val value2 = Random.nextInt()
-        val graph = MutableValuedAdjacencyMapGraphImpl<Int, Int>(false)
+        val graph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int>(false)
         graph.addVertex(0)
         graph.addVertex(1)
         assertNull(graph.getEdgeValue(0, 1))
@@ -151,7 +151,7 @@ class ValuedAdjacencyMapMutableGraphImplTest {
         assertEquals(value2, graph.getEdgeValue(0, 1))
         assertEquals(value2, graph.getEdgeValue(1, 0))
 
-        val directedGraph = MutableValuedAdjacencyMapGraphImpl<Int, Int>(true)
+        val directedGraph = MutableValuedAdjacencyMatrixGraphImpl<Int, Int>(true)
         directedGraph.addVertex(0)
         directedGraph.addVertex(1)
         assertNull(directedGraph.getEdgeValue(0, 1))
