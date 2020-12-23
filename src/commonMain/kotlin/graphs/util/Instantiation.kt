@@ -48,7 +48,7 @@ fun <Vertex, EdgeValue> valuedGraphOf(
 fun <Vertex> mutableGraphOf(
     isDirected: Boolean = true,
     vararg vertexEdgePairs: Pair<Vertex, Set<Vertex>>
-) = mutableGraphOf(
+): MutableGraph<Vertex> = mutableGraphOf(
     isDirected,
     mutableMapOf<Vertex, Set<Vertex>>()
         .also { it.putAll(vertexEdgePairs) }
@@ -72,7 +72,7 @@ fun <Vertex> mutableGraphOf(
 fun <Vertex> graphOf(
     isDirected: Boolean = true,
     vararg vertexEdgePairs: Pair<Vertex, Set<Vertex>>
-) = graphOf(
+): Graph<Vertex> = graphOf(
     isDirected,
     mutableMapOf<Vertex, Set<Vertex>>()
         .also { it.putAll(vertexEdgePairs) }
