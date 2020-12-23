@@ -26,6 +26,10 @@ abstract class AdjacencyMatrixGraph<Vertex>(override val isDirected: Boolean) : 
         if (vertexIndex <0)
             return null
 
-        return _adjacencyMatrix[vertexIndex].mapIndexed { index, _ -> _vertexList[index] }.toSet()
+        return _adjacencyMatrix[vertexIndex]
+            .mapIndexed { index, value -> Pair(value, _vertexList[index]) }
+            .filter { it.first }
+            .map { it.second }
+            .toSet()
     }
 }

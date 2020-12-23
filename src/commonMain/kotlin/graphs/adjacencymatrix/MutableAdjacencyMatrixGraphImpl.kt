@@ -1,6 +1,7 @@
 package graphs.adjacencymatrix
 
 import graphs.MutableGraph
+import graphs.exceptions.VertexNotFoundException
 
 open class MutableAdjacencyMatrixGraphImpl<Vertex>(isDirected: Boolean) :
     MutableGraph<Vertex>,
@@ -8,10 +9,10 @@ open class MutableAdjacencyMatrixGraphImpl<Vertex>(isDirected: Boolean) :
     override fun addEdge(from: Vertex, to: Vertex): Boolean {
         val fromIndex = _vertexList.indexOf(from)
         if (fromIndex < 0)
-            return false
+            throw VertexNotFoundException(from)
         val toIndex = _vertexList.indexOf(to)
         if (toIndex < 0)
-            return false
+            throw VertexNotFoundException(to)
 
         _adjacencyMatrix[fromIndex][toIndex] = true
         if (!isDirected)

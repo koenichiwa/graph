@@ -11,7 +11,7 @@ abstract class MutableAdjacencyMatrixGraph<Vertex>(isDirected: Boolean) :
             return false
         _vertexList.add(vertex)
         _adjacencyMatrix.forEach { it.add(false) }
-        _adjacencyMatrix.add(mutableListOf())
+        _adjacencyMatrix.add(MutableList(_vertexList.size) { false })
         return true
     }
 
