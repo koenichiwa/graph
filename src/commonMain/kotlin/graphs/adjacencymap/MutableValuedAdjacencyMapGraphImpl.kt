@@ -3,7 +3,7 @@ package graphs.adjacencymap
 import graphs.ValuedMutableGraph
 import graphs.exceptions.VertexNotFoundException
 
-open class MutableValuedAdjacencyMapGraphImpl<Vertex, EdgeValue>(isDirected: Boolean) :
+class MutableValuedAdjacencyMapGraphImpl<Vertex, EdgeValue>(isDirected: Boolean) :
     ValuedMutableGraph<Vertex, EdgeValue>,
     MutableAdjacencyMapGraph<Vertex>(isDirected) {
 
@@ -49,4 +49,17 @@ open class MutableValuedAdjacencyMapGraphImpl<Vertex, EdgeValue>(isDirected: Boo
             _edgeValueMap.remove(to to from)
         return super.removeEdge(from, to)
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is MutableValuedAdjacencyMapGraphImpl<*, *>) return false
+        if (!super.equals(other)) return false
+
+        if (_edgeValueMap != other._edgeValueMap) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int =
+        31 * super.hashCode() + _edgeValueMap.hashCode()
 }

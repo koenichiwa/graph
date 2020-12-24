@@ -36,4 +36,20 @@ class MutableValuedAdjacencyMatrixGraphImpl<Vertex, EdgeValue>(isDirected: Boole
 
     override fun getEdgeValue(from: Vertex, to: Vertex): EdgeValue? =
         _edgeValueMap[from to to]
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is MutableValuedAdjacencyMatrixGraphImpl<*, *>) return false
+        if (!super.equals(other)) return false
+
+        if (_edgeValueMap != other._edgeValueMap) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = super.hashCode()
+        result = 31 * result + _edgeValueMap.hashCode()
+        return result
+    }
 }

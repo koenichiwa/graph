@@ -15,13 +15,19 @@ abstract class AdjacencyMapGraph<Vertex>(override val isDirected: Boolean) : Gra
     override fun neighbors(vertex: Vertex): Set<Vertex>? =
         _adjacencyMap[vertex]
 
-    override fun equals(other: Any?): Boolean =
-        other === this ||
-            other is AdjacencyMapGraph<*> && this.hashCode() == other.hashCode()
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is AdjacencyMapGraph<*>) return false
 
-    override fun hashCode(): Int =
-        _adjacencyMap
-            .asSequence()
-            .flatMap { entry -> entry.value.asSequence().map { entry.key to it } }
-            .fold(0) { acc, pair -> (acc * 7 + pair.hashCode()) % Int.MAX_VALUE }
+        if (isDirected != other.isDirected) return false
+        if (_adjacencyMap != other._adjacencyMap) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = isDirected.hashCode()
+        result = 31 * result + _adjacencyMap.hashCode()
+        return result
+    }
 }

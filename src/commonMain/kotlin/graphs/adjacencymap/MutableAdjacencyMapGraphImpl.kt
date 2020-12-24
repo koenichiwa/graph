@@ -3,7 +3,7 @@ package graphs.adjacencymap
 import graphs.MutableGraph
 import graphs.exceptions.VertexNotFoundException
 
-open class MutableAdjacencyMapGraphImpl<Vertex>(isDirected: Boolean) :
+class MutableAdjacencyMapGraphImpl<Vertex>(isDirected: Boolean) :
     MutableGraph<Vertex>,
     MutableAdjacencyMapGraph<Vertex>(isDirected) {
 
@@ -19,4 +19,13 @@ open class MutableAdjacencyMapGraphImpl<Vertex>(isDirected: Boolean) :
             _adjacencyMap[to]!!.add(from)
         else true
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is MutableAdjacencyMapGraphImpl<*>) return false
+        if (!super.equals(other)) return false
+        return true
+    }
+
+    override fun hashCode(): Int = super.hashCode()
 }

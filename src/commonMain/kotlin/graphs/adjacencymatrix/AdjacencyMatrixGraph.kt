@@ -32,4 +32,22 @@ abstract class AdjacencyMatrixGraph<Vertex>(override val isDirected: Boolean) : 
             .map { it.second }
             .toSet()
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is AdjacencyMatrixGraph<*>) return false
+
+        if (isDirected != other.isDirected) return false
+        if (_vertexList != other._vertexList) return false
+        if (_adjacencyMatrix != other._adjacencyMatrix) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = isDirected.hashCode()
+        result = 31 * result + _vertexList.hashCode()
+        result = 31 * result + _adjacencyMatrix.hashCode()
+        return result
+    }
 }
